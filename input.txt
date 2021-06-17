@@ -1,0 +1,3 @@
+sword spear bow axe dagger hammer
+iron steel silver mithril adamant chrystal
+helmet chest bracers legs sword
