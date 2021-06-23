@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
 
-const std::string FILE_PATH = "..\\input.txt";
-
+/*
+ * Get the word quantity from file input.txt.
+ */
 int GetWordQuantity(std::string& word)
 {
+    const std::string FILE_PATH = "..\\input.txt";
     std::ifstream readingStream(FILE_PATH);
     if (readingStream.is_open())
     {
