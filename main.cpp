@@ -1,30 +1,33 @@
 #include <iostream>
 #include <fstream>
 
-int GetWordQuantity(std::string word)
+const std::string FILE_PATH = "..\\input.txt";
+
+int GetWordQuantity(std::string& word)
 {
-    char* dir = "C:\\Users\\oldsc\\CLionProjects\\Task_19_1\\input.txt";
-    std::ifstream reading_stream(dir);
-
-    int counter = 0;
-    while (!reading_stream.eof())
+    std::ifstream readingStream(FILE_PATH);
+    if (readingStream.is_open())
     {
-        std::string buffer;
-        reading_stream >> buffer;
-        if (buffer == word)
-            counter++;
+        int counter = 0;
+        while (!readingStream.eof())
+        {
+            std::string buffer;
+            readingStream >> buffer;
+            if (buffer == word)
+                counter++;
+        }
+        readingStream.close();
+        return counter;
+    } else {
+        std::cerr << "File reading error!\n";
+        return -1;
     }
-
-    reading_stream.close();
-    return counter;
 }
 
 int main() {
-    std::string word_to_find;
+    std::string wordToFind;
     std::cout << "Please enter the word to find: ";
-    std::cin >> word_to_find;
-
-    std::cout << "Quantity of words: " << GetWordQuantity(word_to_find) << "\n";
-
+    std::cin >> wordToFind;
+    std::cout << "Quantity of words: " << GetWordQuantity(wordToFind) << "\n";
     return 0;
 }
